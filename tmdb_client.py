@@ -1,3 +1,5 @@
+from random import shuffle
+
 import requests
 
 
@@ -12,7 +14,12 @@ def get_popular_movies():
     return response.json()
 
 
-def get_poster_url(poster_api_path,size="w342"):
+def get_poster_url(poster_api_path, size="w342"):
     base_url = "https://image.tmdb.org/t/p/"
     return base_url + size + poster_api_path
 
+
+def get_movies(how_many):
+    data = get_popular_movies()
+    shuffle(data["results"])
+    return data["results"][:how_many]
