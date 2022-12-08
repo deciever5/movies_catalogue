@@ -15,7 +15,7 @@ def get_popular_movies():
     return response.json()
 
 
-def get_poster_url(poster_api_path, size="w342"):
+def get_image_url(poster_api_path, size="w342"):
     if poster_api_path is None:
         return "https://upload.wikimedia.org/wikipedia/commons/a/ac/No_image_available.svg"
     base_url = "https://image.tmdb.org/t/p/"
@@ -38,3 +38,9 @@ def get_movie_credits(movie_id):
     page = f'https://api.themoviedb.org/3/movie/{movie_id}/credits'
     response = requests.get(page, headers=headers)
     return response.json()['cast']
+
+
+def get_movie_images(movie_id):
+    page = f"https://api.themoviedb.org/3/movie/{movie_id}/images"
+    response = requests.get(page, headers=headers)
+    return response.json()
