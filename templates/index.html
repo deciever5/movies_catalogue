@@ -71,28 +71,39 @@
   </head>
 
   <body>
-     <nav class="navbar navbar-expand navbar-dark bg-success" style="background-color: #e3f2fd;" aria-label="Second navbar example">
-    <div class="container-fluid">
-      <a class="navbar-brand" href="#">Movie Library</a>
-      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarsExample02" aria-controls="navbarsExample02" aria-expanded="false" aria-label="Toggle navigation">
-        <span class="navbar-toggler-icon"></span>
-      </button>
+        <!-- Navbar -->
+        <nav class="navbar navbar-expand navbar-dark bg-success" style="background-color: #e3f2fd;" aria-label="Toggle navigation">
+            <div class="container-fluid">
+              <a class="navbar-brand" href="#">Movie Library</a>
+              <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavDropdown" aria-controls="nnavbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
+                  <span class="navbar-toggler-icon"></span>
+              </button>
+                <div class="collapse navbar-collapse" id="navbarNavDropdown">
+                    <ul class="navbar-nav">
+                        <li class="nav-item dropdown">
+                          <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" role="button" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                            Movies
+                          </a>
+                    <ul class="dropdown-menu dropdown-menu-success" aria-labelledby="dropdownMenuClickableInside">
+                            <li><a class="dropdown-item" href="{{ url_for('homepage', list_name='popular') }}">Popular</a></li>
+                            <li><a class="dropdown-item" href="{{ url_for('homepage', list_name='now_playing') }}">Now Playing</a></li>
+                            <li><a class="dropdown-item" href="{{ url_for('homepage', list_name='top_rated') }}">Top rated</a></li>
+                            <li><a class="dropdown-item" href="{{ url_for('homepage', list_name='upcoming') }}">Upcoming</a></li>
+                    </ul>
 
-      <div class="collapse navbar-collapse" id="navbarsExample02">
-        <ul class="navbar-nav me-auto">
-          <li class="nav-item">
-            <a class="nav-link active" aria-current="page" href="#">Movies</a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link" href="#">Series</a>
-          </li>
-        </ul>
-        <form role="search">
-          <input class="form-control" type="search" placeholder="Search" aria-label="Search">
-        </form>
-      </div>
-    </div>
-  </nav>
+
+                        </li>
+                            <li class="nav-item">
+                              <a class="nav-link" href="#">Series</a>
+                            </li>
+                          </ul>
+                    </div>
+                          <form role="search">
+                            <input class="form-control" type="search" placeholder="Not working (yet)" aria-label="Search">
+                          </form>
+
+                      </div>
+         </nav>
 
   <main>
       <!-- Page Content -->
@@ -102,7 +113,7 @@
       </div>
   </main>
 
-</div>
+
     <script src="{{ url_for('static',filename='dist/js/bootstrap.bundle.min.js') }}" ></script>
   </body>
 </html>

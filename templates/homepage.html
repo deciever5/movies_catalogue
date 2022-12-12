@@ -4,8 +4,17 @@
 
 <div class="row">
    <div class="col-lg-12 text-center">
-       <h1 class="mt-5">Witaj w mojej bibliotece filmów</h1>
+       <h1 class="mt-5">Welcome to movie library</h1>
        <p class="lead"> </p>
+       <div>
+           <div class="col-lg-12 mb-4">
+             <a role="button" aria-pressed="true" href="{{ url_for('homepage', list_name='popular') }}" class="btn btn-outline-info">Popular</a>
+             <a role="button"  href="{{ url_for('homepage', list_name='now_playing') }}" class="btn btn-outline-info">Now Playing</a>
+             <a role="button"  href="{{ url_for('homepage', list_name='top_rated') }}" class="btn btn-outline-info">Top rated</a>
+             <a role="button"  href="{{ url_for('homepage', list_name='upcoming') }}" class="btn btn-outline-info">Upcoming</a>
+            </div>
+       </div>
+
    </div>
    {% for movie in movies %}
    <div class="col-xl-2 col-lg-3 col-md-4  mb-4">
@@ -15,7 +24,7 @@
                <h4 class="card-title" style="font-size:15px">{{movie.title}}</h4>
            </div>
            <div class="card-footer text-center">
-               <a href="#" class="btn btn-success ">Pokaż więcej</a>
+               <a href="#" class="btn btn-success ">Show more</a>
            </div>
        </div>
    </div>

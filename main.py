@@ -1,5 +1,5 @@
 from random import random, choice
-from flask import Flask, render_template
+from flask import Flask, render_template, request, url_for
 
 import tmdb_client
 
@@ -8,8 +8,16 @@ app = Flask(__name__)
 
 @app.route('/')
 def homepage():
-    movies = tmdb_client.get_movies(how_many=12)
-    return render_template("homepage.html", movies=movies)
+    # przygotowanie danych dla rozwijanej listy
+    """menu_items = [
+        {'title': 'Popular', 'url': url_for('home')},
+        {'title': 'Now playing', 'url': url_for('about')},
+        {'title': 'Top rated', 'url': url_for('contact')},
+        {'title': 'Upcoming', 'url': url_for('contact')},
+    ]"""
+    selected_list = request.args.get('list_name','popular')
+    movies = tmdb_client.get_movies(how_many=12,list_name=selected_list)
+    return render_template("homepage.html", movies=movies,current_list = selected_list)
 
 
 @app.route("/movie/<movie_id>")
