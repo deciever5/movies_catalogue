@@ -21,7 +21,7 @@
            <dt>Budget</dt>
            <dd>{{ movie.budget }}</dd>
            <dt>Genre</dt>
-           <dd>{% for genre in movie.genres %}{{ genre.name }}, {% endfor %}</dd>
+           <dd>{% for genre in movie.genres[:-1] %}{{ genre.name }}, {% endfor %}{{ movie.genres[-1].name if movie.genres else '' }}</dd>
          </dl>
      </div>
    </div>
